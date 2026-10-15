@@ -23,6 +23,7 @@ int main(void)
     GPIOA_MODER &= ~(1U<<11);   // Clear bit 11
 
     while (1) {
-        GPIOA_ODR |= (1U<<5);   // PA5 == HIGH
+        GPIOA_ODR ^= (1U<<5);   // PA5 == HIGH
+        for (volatile int i = 0; i < 1000000; i++);
     }
 }
