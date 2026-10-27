@@ -43,4 +43,9 @@ SECTIONS
 		. = ALIGN(4);
 		_ebss = .;	/* end of .bss */
 	} > SRAM
+
+    ASSERT(
+        _ebss + __max_heap_size + __max_stack_size <= ORIGIN(SRAM) + LENGTH(SRAM),
+        "Not enough SRAM for heap and stack"
+    )
 }
